@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" uid="uid://c2kx5y7b8n9m1" path="res://scenes/player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://d3ky8z9c0p2n4" path="res://scenes/enemy.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b4mx7y1c2p5n8" path="res://scenes/key.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://e5nx9y2d3q6n0" path="res://scenes/gate.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://f6oy0z3e4r7n2" path="res://scenes/goal.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://h8qa2b5g6t9n4" path="res://scenes/hud.tscn" id="6"]
+[ext_resource type="Script" path="res://scripts/level_script.gd" id="7"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1200, 20)
+
+[node name="Level50" type="Node2D"]
+script = ExtResource("7")
+level_number = 50
+enable_fog = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="TopWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(640, 10)
+shape = SubResource("1")
+
+[node name="WallRect1" type="ColorRect" parent="Walls/TopWall"]
+offset_left = -600
+offset_top = -10.0
+offset_right = 600
+offset_bottom = 10.0
+color = Color(0.3, 0.3, 0.35, 1)
+
+[node name="BottomWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(640, 710)
+shape = SubResource("1")
+
+[node name="WallRect2" type="ColorRect" parent="Walls/BottomWall"]
+offset_left = -600
+offset_top = -10.0
+offset_right = 600
+offset_bottom = 10.0
+color = Color(0.3, 0.3, 0.35, 1)
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(10, 360)
+rotation = 1.5708
+shape = SubResource("1")
+
+[node name="WallRect3" type="ColorRect" parent="Walls/LeftWall"]
+offset_left = -600
+offset_top = -10.0
+offset_right = 600
+offset_bottom = 10.0
+color = Color(0.3, 0.3, 0.35, 1)
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1270, 360)
+rotation = 1.5708
+shape = SubResource("1")
+
+[node name="WallRect4" type="ColorRect" parent="Walls/RightWall"]
+offset_left = -600
+offset_top = -10.0
+offset_right = 600
+offset_bottom = 10.0
+color = Color(0.3, 0.3, 0.35, 1)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(100, 360)
+
+[node name="Goal" parent="." instance=ExtResource("5")]
+position = Vector2(1180, 360)
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Key1" parent="Keys" instance=ExtResource("3")]
+position = Vector2(200, 150)
+
+[node name="Key2" parent="Keys" instance=ExtResource("3")]
+position = Vector2(400, 570)
+
+[node name="Key3" parent="Keys" instance=ExtResource("3")]
+position = Vector2(600, 150)
+
+[node name="Key4" parent="Keys" instance=ExtResource("3")]
+position = Vector2(800, 570)
+
+[node name="Key5" parent="Keys" instance=ExtResource("3")]
+position = Vector2(1000, 150)
+
+[node name="Gates" type="Node2D" parent="."]
+
+[node name="Gate1" parent="Gates" instance=ExtResource("4")]
+position = Vector2(900, 360)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(300, 360)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(550, 360)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(800, 360)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(1050, 360)
+
+[node name="HUD" parent="." instance=ExtResource("6")]
