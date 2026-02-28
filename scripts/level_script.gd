@@ -31,6 +31,9 @@ func setup_level() -> void:
 	if players.size() > 0:
 		var player = players[0]
 		player.player_died.connect(_on_player_died)
+	
+	# Connect level completion
+	LevelManager.level_completed.connect(_on_level_completed)
 
 func setup_fog_system() -> void:
 	fog_system = FogSystem.new()
@@ -60,3 +63,11 @@ func show_pause_menu() -> void:
 			pause_menu.add_to_group("pause_menu")
 			add_child(pause_menu)
 			pause_menu.pause_game()
+
+func _on_level_completed(level_num: int, time: float) -> void:
+	# Show level complete screen
+	var complete_scene = load("res://scenes/level_complete.tscn")
+	if complete_scene:
+		var complete_screen = complete_scene.instantiate()
+		add_child(complete_screen)
+		complete_screen.show_completion(time)
