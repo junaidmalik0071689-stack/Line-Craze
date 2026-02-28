@@ -4,7 +4,7 @@ extends Control
 
 @onready var time_label: Label = $Panel/VBoxContainer/TimeLabel if has_node("Panel/VBoxContainer/TimeLabel") else null
 @onready var next_button: Button = $Panel/VBoxContainer/NextButton if has_node("Panel/VBoxContainer/NextButton") else null
-@ontml:parameter name="restart_button: Button = $Panel/VBoxContainer/RestartButton if has_node("Panel/VBoxContainer/RestartButton") else null
+@onready var restart_button: Button = $Panel/VBoxContainer/RestartButton if has_node("Panel/VBoxContainer/RestartButton") else null
 @onready var menu_button: Button = $Panel/VBoxContainer/MenuButton if has_node("Panel/VBoxContainer/MenuButton") else null
 
 var level_time: float = 0.0
